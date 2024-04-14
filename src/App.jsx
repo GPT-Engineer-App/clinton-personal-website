@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.jsx";
-import { Button } from "@/components/ui/button.jsx";
-import { Input } from "@/components/ui/input.jsx";
-import { Label } from "@/components/ui/label.jsx";
-import { Textarea } from "@/components/ui/textarea.jsx";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card.jsx";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Twitter, Github } from "lucide-react";
+import Hobbies from "./hobbies";
 
 function App() {
   const [name, setName] = useState("");
@@ -14,7 +15,6 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
     setName("");
     setEmail("");
@@ -23,20 +23,46 @@ function App() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <header className="mb-8 flex items-center">
-        <Avatar className="mr-4">
-          <AvatarImage src="/placeholder-avatar.png" />
-          <AvatarFallback>DC</AvatarFallback>
-        </Avatar>
-        <h1 className="text-4xl font-bold">DeWitt Clinton</h1>
+      <header className="mb-8 flex items-center justify-between">
+        <div className="flex items-center">
+          <Avatar className="mr-4">
+            <AvatarImage src="/placeholder-avatar.png" />
+            <AvatarFallback>DC</AvatarFallback>
+          </Avatar>
+          <h1 className="text-4xl font-bold">DeWitt Clinton</h1>
+        </div>
+        <nav>
+          <ul className="flex space-x-4">
+            <li>
+              <a href="#about" className="hover:text-primary">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#projects" className="hover:text-primary">
+                Projects
+              </a>
+            </li>
+            <li>
+              <a href="/hobbies" className="hover:text-primary">
+                Hobbies
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="hover:text-primary">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
       </header>
 
-      <section className="mb-8">
+      <section id="about" className="mb-8">
         <h2 className="mb-4 text-2xl font-semibold">About Me</h2>
         <p>Hi, I'm DeWitt Clinton, a software engineer based in San Francisco. I have a passion for building innovative web applications and solving complex problems. With over 5 years of experience in the industry, I specialize in front-end development using modern technologies like React and Tailwind CSS.</p>
       </section>
 
-      <section className="mb-8">
+      <section id="projects" className="mb-8">
         <h2 className="mb-4 text-2xl font-semibold">Projects</h2>
         <div className="grid gap-4 md:grid-cols-2">
           <Card>
@@ -60,7 +86,7 @@ function App() {
         </div>
       </section>
 
-      <section>
+      <section id="contact">
         <h2 className="mb-4 text-2xl font-semibold">Contact</h2>
         <div className="mb-4 flex space-x-4">
           <a href="mailto:dewitt@example.com" className="flex items-center space-x-2 hover:text-primary">
